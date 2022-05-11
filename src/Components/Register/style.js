@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const RegisterContainer = styled.div`
 
     width: 100%;
     height: 100vh;
@@ -9,7 +9,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightgreen;
+    background-color: orange;
 
     @media (min-width: 768px) {
         width: 25%;
@@ -18,7 +18,79 @@ const Container = styled.div`
         border-radius: 20px;
     }
 
-`
-export default Container;
+    .items {
 
-// example of styled-components
+        width: 100%;
+        height: 90%;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        h1 {
+
+            font-family: 'Saira Stencil One';
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 50px;
+            color: black;
+            padding-top: 15%;
+        }
+
+        form {
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            input {
+
+                width: 85%;
+                height: 10%;
+                background: #FFFFFF;
+                border-radius: 4px;
+                margin-bottom: 2%;
+
+                font-family: 'Raleway';                
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 23px;
+                color: 000000;
+            }
+
+            button {
+                
+                width: 85%;
+                height: 10%;
+                background: black;
+                border-radius: 4px;
+                border: none;
+                cursor: pointer;
+
+                font-family: 'Raleway';
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 23px;
+                color: #FFFFFF;
+            }
+
+            a {
+
+                font-family: 'Raleway';
+                font-weight: 700;
+                font-size: 15px;
+                line-height: 18px;
+                color: black;
+                margin-top: 10%;
+            }
+        }
+    }
+`
+
+export default RegisterContainer;
+;

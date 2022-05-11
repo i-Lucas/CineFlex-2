@@ -6,17 +6,17 @@ import '../public/stylesheets/reset.css';
 import '../public/stylesheets/global.css';
 import '../public/stylesheets/fonts.css';
 
-import ComponentA from './Components/ComponentA';
-import ComponentB from './Components/ComponentB';
-import ComponentC from './Components/ComponentC';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Home from './Components/Home';
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<ComponentA />} />
-				<Route path="/B" element={<ComponentB />} />
-				<Route path="/C" element={<ComponentC />} />
+				<Route path="/" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/home" element={<Home />} />
 			</Routes>
 		</BrowserRouter>
 	);
