@@ -1,14 +1,16 @@
 import React from "react"
 import styled from 'styled-components'
 
+import hamburguer from '../../../icons8-menu-arredondado-100.png'
+
 export default function Searchbar() {
     return <SearchbarContainer>
         <button>
-            <img src='./public/Assets/icons8-menu-arredondado-100.png' />
+            <img src={hamburguer} />
         </button>
         <form>
             <input />
-            <button>Procurar</button>
+            <button className="search-button">Procurar</button>
         </form>
     </SearchbarContainer>
 }
@@ -24,13 +26,23 @@ const SearchbarContainer = styled.nav`
         display: flex;
         align-items: center;
         gap: 5px;
+    }
 
-        button {
-            border: none;
-            border-radius: 2px;
-            background-color: black;
-            color: white;
-            font-weight: 700;
+    .search-button {
+        border: none;
+        border-radius: 2px;
+        background-color: black;
+        color: white;
+        font-weight: 700;
+    }
+
+    button {
+        img {
+            height: 25px
         }
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        display: flex;
     }
 `
