@@ -5,14 +5,15 @@ import "../assets/styles/reset.css";
 import "../assets/styles/global.css";
 
 import Main from "../pages/main";
-import Sessions from "../pages/sessions";
+import Session from "../pages/session";
 
 export default function App() {
+    
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/sessoes:id" element={<Sessions />} />
+                <Route path="/session/:id" element={<Session />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

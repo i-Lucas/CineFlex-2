@@ -12,13 +12,13 @@ import {
 
 export default function Footer({ data }) {
 
-    const { image, name, date } = data;
+    const { img, title, date } = data;
     
     return (
         <Container>
-            <ImageContainer src={image} />
+            <ImageContainer src={img} />
             <MovieDataContainer>
-                <Roboto>{name}</Roboto>
+                <Roboto>{title}</Roboto>
                 <Space />
                 <Roboto>{date}</Roboto>
             </MovieDataContainer>

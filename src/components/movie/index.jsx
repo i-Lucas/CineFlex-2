@@ -6,8 +6,6 @@ export default function MovieCard({ props }) {
 
     const navigate = useNavigate();
 
-    const { id, title, posterURL, overview, releaseDate } = props;
-    const state = { id, title, posterURL, overview, releaseDate };
-
-    return <Container src={posterURL} onClick={() => navigate(`/sessoes:${id}`, { state })} />
+    const { id, posterURL: img } = props;
+    return <Container src={img} onClick={() => navigate(`/session/${id}`)} />
 };

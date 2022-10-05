@@ -6,6 +6,7 @@ export const Container = styled.section`
     height: 80%;
     margin: 2%;
     
+    border-radius: 5px;
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
