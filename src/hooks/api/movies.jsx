@@ -1,5 +1,5 @@
 import useAsync from "../async";
-import * as moviesApi from "../../services/movieApi";
+import moviesApi from "../../services/movieApi";
 
 export default function useMovies() {
 

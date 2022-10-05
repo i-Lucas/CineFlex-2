@@ -1,12 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
-import useMovies from "../hooks/api/useMovies";
+// import useMovies from "../hooks/api/movies";
+// import useSessions from "../hooks/api/sessions";
+// import useSeats from "../hooks/api/seats";
 
-export default function Home () {
+export default function Home() {
 
-    const movies = useMovies();
-    console.log(movies.data);
+    // const movies = useMovies();
+    // console.log(movies.data);
+
+    // const session = useSessions(1);
+    // console.log(session.data);
+
+    // const seats = useSeats.getSeats(5);
+    // console.log(seats.data);
+
+    // const reserve = useSeats.bookSeats({
+    //     ids: [0],
+    //     name: "Fulano",
+    //     cpf: "12345678900"
+    // });
+
+    console.log(reserve.data);
 
     return (
         <HomeContainer>
