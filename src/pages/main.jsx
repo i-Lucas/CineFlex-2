@@ -1,51 +1,63 @@
 import React from "react";
 import styled from "styled-components";
 
-// import useMovies from "../hooks/api/movies";
-// import useSessions from "../hooks/api/sessions";
-// import useSeats from "../hooks/api/seats";
-
 import Header from "../components/header";
-import Footer from "../components/footer";
+import Loader from "../components/loader";
+import useMovies from "../hooks/api/movies";
+import SomethingWentWrong from "../components/error";
+
+import { HomeContainer, Content } from "./style";
 
 export default function Home() {
 
-    // const movies = useMovies();
-    // console.log(movies.data);
+    const [movies, setMovies] = React.useState([]);
+    const { loading, data, error } = useMovies();
 
-    // const session = useSessions(1);
-    // console.log(session.data);
+    React.useEffect(() => {
 
-    // const seats = useSeats.getSeats(5);
-    // console.log(seats.data);
+        if (!loading) setMovies(data);
 
-    // const reserve = useSeats.bookSeats({
-    //     ids: [0],
-    //     name: "Fulano",
-    //     cpf: "12345678900"
-    // });
+    }, [loading]);
 
-    // console.log(reserve.data);
+    function RenderContent() {
+
+        if (error) return SomethingWentWrong(error);
+        if (loading) return RenderLoader();
+        return RenderMovies(movies);
+    };
 
     return (
         <HomeContainer>
             <Header />
-            <Content />
-            <Footer data={{ image: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg", name: "Lucas", date: "Quinta-Feira 15:00" }} />
+            <Content >
+                <RenderContent />
+            </Content>
         </HomeContainer>
     )
 };
 
-const HomeContainer = styled.div`
+function RenderLoader() {
 
-    width: 100%;
-    height: 100vh;
-    background-color: lightblue;
-`;
+    return (
+        <Content >
+            <Loader color={"#C3CFD9"} height={"80%"} width={"80%"} />
+        </Content>
+    )
+};
 
-const Content = styled.section`
+function RenderMovies(movies) {
+    return movies.map((element, index) => <MovieCard key={index} props={element} />)
+};
 
-    width: 100%;
-    height: 75%;
+const MovieCard = styled.section`
+
+    width: 20%;
+    height: 80%;
+    margin: 2%;
     background-color: tomato;
+
+    @media screen and (max-width: 768px) {
+        width: 45%;
+        height: 40%;
+    }
 `;

@@ -5,7 +5,7 @@ export default function useAsync(handler, immediate = true) {
     const [status, setStatus] = React.useState({
 
         data: null,
-        loading: false,
+        loading: true,
         error: null
     });
 
