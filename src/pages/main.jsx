@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+import useMovies from "../hooks/api/useMovies";
+
 export default function Home () {
+
+    const movies = useMovies();
+    console.log(movies.data);
 
     return (
         <HomeContainer>
