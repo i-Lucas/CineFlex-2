@@ -5,6 +5,9 @@ import styled from "styled-components";
 // import useSessions from "../hooks/api/sessions";
 // import useSeats from "../hooks/api/seats";
 
+import Header from "../components/header";
+import Footer from "../components/footer";
+
 export default function Home() {
 
     // const movies = useMovies();
@@ -22,11 +25,13 @@ export default function Home() {
     //     cpf: "12345678900"
     // });
 
-    console.log(reserve.data);
+    // console.log(reserve.data);
 
     return (
         <HomeContainer>
-            <h1>Hello World</h1>
+            <Header />
+            <Content />
+            <Footer data={{ image: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg", name: "Lucas", date: "Quinta-Feira 15:00" }} />
         </HomeContainer>
     )
 };
@@ -36,4 +41,11 @@ const HomeContainer = styled.div`
     width: 100%;
     height: 100vh;
     background-color: lightblue;
+`;
+
+const Content = styled.section`
+
+    width: 100%;
+    height: 75%;
+    background-color: tomato;
 `;
