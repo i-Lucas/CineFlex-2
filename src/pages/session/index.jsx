@@ -14,6 +14,8 @@ import SomethingWentWrong from "../../components/error";
 export default function Session() {
 
     const { id } = useParams();
+    const navigate = useNavigate();
+    
     const [seats, setSeat] = React.useState({ movie: {}, list: [] });
     const { movie } = seats;
 
