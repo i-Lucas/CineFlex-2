@@ -1,5 +1,5 @@
 import React from "react";
 import { ThreeDots } from "react-loader-spinner";
 
-const Loader = ({ color, height, width }) => <ThreeDots color={color} height={height} width={width} />
+const Loader = () => <ThreeDots color={"#C3CFD9"} height={"80%"} width={"80%"} />
 export default Loader;

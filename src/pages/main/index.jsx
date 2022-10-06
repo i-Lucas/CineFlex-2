@@ -1,5 +1,6 @@
 import React from "react";
 
+import Title from "../../components/title";
 import Header from "../../components/header";
 import Loader from "../../components/loader";
 import useMovies from "../../hooks/api/movies";
@@ -22,7 +23,7 @@ export default function Home() {
     function RenderContent() {
 
         if (error) return SomethingWentWrong(error);
-        if (loading) return RenderLoader();
+        if (loading) return <Content><Loader /></Content>;
         return RenderMovies(movies);
     };
 
@@ -30,18 +31,10 @@ export default function Home() {
         <HomeContainer>
             <Header />
             <Content >
+                <Title content={"Selecione o filme"} />
                 <RenderContent />
             </Content>
         </HomeContainer>
-    )
-};
-
-function RenderLoader() {
-
-    return (
-        <Content>
-            <Loader color={"#C3CFD9"} height={"80%"} width={"80%"} />
-        </Content>
     )
 };
 

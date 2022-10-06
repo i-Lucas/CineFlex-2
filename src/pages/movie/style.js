@@ -9,7 +9,7 @@ export const Container = styled.section`
 export const Content = styled.section`
 
     width: 100%;
-    height: 75%;
+    height: 65%;
 
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@ export const Content = styled.section`
 export const SessionContainer = styled.section`
 
     width: 20%;
-    height: 30%;
+    height: 35%;
     margin: 2%;
 
     border-radius: 5px;
@@ -40,6 +40,7 @@ export const SessionContainer = styled.section`
     
     @media screen and (max-width: 768px) {
         width: 80%;
+        height: 20%;
         margin: 5% auto;
     }
 `;

@@ -1,24 +1,23 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-import Header from "../../components/header";
 import Footer from "../../components/footer";
-import SomethingWentWrong from "../../components/error";
-
-import BuildSessionBox from "./box";
-import { Container, Content } from "./style";
+import Header from "../../components/header";
 import Loader from "../../components/loader";
-import useSession from "../../hooks/api/sessions";
+import Title from "../../components/title";
+import useSeats from "../../hooks/api/seats";
+import { Roboto } from "../../components/fonts";
+
+import SomethingWentWrong from "../../components/error";
 
 export default function Session() {
 
     const { id } = useParams();
-    const navigate = useNavigate();
+    const [seats, setSeat] = React.useState({ movie: {}, list: [] });
+    const { movie } = seats;
 
-    const { loading, data, error } = useSession(id);
-
-    const [session, setSession] = React.useState({ movie: {}, sessions: [] });
-    const { movie } = session;
+    const { loading, data, error } = useSeats.getSeats(id);
 
     React.useEffect(() => {
 
@@ -28,40 +27,97 @@ export default function Session() {
 
             const movie = {
 
-                id: data.id,
-                title: data.title,
-                img: data.posterURL
+                date: `${data.day.weekday} ${data.day.date}`,
+                img: data.movie.posterURL,
+                title: data.movie.title
             };
 
-            setSession({ movie, sessions: [...data.days] });
+            setSeat({ movie, list: [...data.seats] });
         };
 
     }, [loading]);
 
-    function RenderSessions() {
+    function RenderSeats() {
 
-        if (loading) return RenderLoader();
+        if (loading) return <Content><Loader /></Content>;
         if (error) return SomethingWentWrong(error);
-        const { sessions } = session;
-        return sessions.map((element, index) => <BuildSessionBox key={index} props={element} />);
+
+        const { list } = seats;
+        return list.map((data, index) => <SeatComponent key={index} props={data} />);
+    };
+
+    function SeatComponent({ props }) {
+
+        const { id, name, isAvailable } = props;
+
+        return (
+            <SeatBox >
+                <Roboto size="12px">
+                    {name}
+                </Roboto>
+            </SeatBox>
+        )
     };
 
     return (
         <Container>
             <Header />
+            <Title content={"Selecione o(s) assento(s)"} />
             <Content>
-                <RenderSessions />
+                <SeatContainer>
+                    <RenderSeats />
+                </SeatContainer>
             </Content>
-            <Footer data={{ img: movie.img, title: movie.title, date: "Amanhã" }} />
+            <Footer data={movie} />
         </Container>
     )
 };
 
-function RenderLoader() {
+const Container = styled.section`
 
-    return (
-        <Content>
-            <Loader color={"#C3CFD9"} height={"80%"} width={"80%"} />
-        </Content>
-    )
-};
+    width: 100%;
+    height: 100vh;
+`;
+
+const Content = styled.section`
+
+    width: 100%;
+    height: 65%;
+`;
+
+const SeatContainer = styled.section`
+
+    width: 55%;
+    height: 50%;
+    margin: auto;
+    overflow: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
+`;
+
+const SeatBox = styled.section`
+
+    width: 26px;
+    height: 26px;
+    margin: 1%;
+
+    border-radius: 12px;
+    border: 1px solid #808F9D;
+    background-color: #C3CFD9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+`;

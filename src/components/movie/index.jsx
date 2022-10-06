@@ -7,5 +7,5 @@ export default function MovieCard({ props }) {
     const navigate = useNavigate();
 
     const { id, posterURL: img } = props;
-    return <Container src={img} onClick={() => navigate(`/session/${id}`)} />
+    return <Container src={img} onClick={() => navigate(`/movie/${id}`)} />
 };
