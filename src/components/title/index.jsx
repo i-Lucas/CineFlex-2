@@ -6,7 +6,7 @@ export default function Title({ content }) {
 
     return (
         <Container>
-            <Roboto size="2rem">
+            <Roboto special={true} size="2rem">
                 {content}
             </Roboto>
         </Container>
