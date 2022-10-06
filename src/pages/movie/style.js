@@ -29,6 +29,7 @@ export const SessionContainer = styled.section`
     height: 35%;
     margin: 2%;
 
+    transition: 1s;
     border-radius: 5px;
     background-color: gray;
     box-shadow: 10px 10px 5px #aaaaaa;
@@ -51,8 +52,8 @@ export const WeekdayContainer = styled.section`
     height: 50%;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 `;
 
 export const ButtonsContainer = styled.section`

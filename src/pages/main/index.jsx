@@ -1,13 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Title from "../../components/title";
 import Header from "../../components/header";
 import Loader from "../../components/loader";
 import useMovies from "../../hooks/api/movies";
-import SomethingWentWrong from "../../components/error";
 
-import MovieCard from "../../components/movie";
-import { HomeContainer, Content } from "./style";
+import SomethingWentWrong from "../../components/error";
+import { HomeContainer, Content, MovieContainer } from "./style";
 
 export default function Home() {
 
@@ -24,7 +24,7 @@ export default function Home() {
 
         if (error) return SomethingWentWrong(error);
         if (loading) return <Content><Loader /></Content>;
-        return RenderMovies(movies);
+        return movies.map((element, index) => <MovieCard key={index} props={element} />);
     };
 
     return (
@@ -38,6 +38,10 @@ export default function Home() {
     )
 };
 
-function RenderMovies(movies) {
-    return movies.map((element, index) => <MovieCard key={index} props={element} />)
+function MovieCard({ props }) {
+
+    const navigate = useNavigate();
+    const { id, posterURL: img } = props;
+
+    return <MovieContainer src={img} onClick={() => navigate(`/movie/${id}`)} />
 };
