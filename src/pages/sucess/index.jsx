@@ -34,17 +34,15 @@ export default function Sucess() {
             const { name, cpf, movie, tickets } = state;
             const data = { name, cpf, movie, tickets };
 
-            (async function () {
-                await api.post(`/seats/book-many`,
-                    { ids: data.tickets, name, cpf });
-            })();
+            // (async function () {
+            //     await api.post(`/seats/book-many`,
+            //         { ids: data.tickets, name, cpf });
+            // })();
 
             setData(data);
         };
 
     }, [state]);
-
-
 
     if (data.movie) {
 
@@ -90,11 +88,12 @@ export default function Sucess() {
     };
 };
 
-function RenderTickets({ tickets }) {
-
-    return tickets.map((element, index) =>
-        <Ticket key={index}>
+function RenderTickets({ tickets }) { 
+    
+    return tickets.map(item =>
+        <Ticket key={item.seat}>
             <Roboto>Poltrona</Roboto>
-            <Roboto bold>{element}</Roboto>
-        </Ticket>)
+            <Roboto bold>{item.number}</Roboto>
+        </Ticket>
+    )
 };

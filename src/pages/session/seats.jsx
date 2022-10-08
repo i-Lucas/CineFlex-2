@@ -11,7 +11,7 @@ export default function RenderSeats({ props }) {
 
     if (loading) return <Content><Loader /></Content>;
     if (error) return SomethingWentWrong(error);
-
+    
     return seats.list.map((data, index) =>
 
         <SeatComponent
@@ -19,9 +19,9 @@ export default function RenderSeats({ props }) {
             key={index}
             props={data}
             colors={colors}
-            selected={list.includes(data.id)}
+            selected={list.find(item => parseInt(item.seat) === data.id)}
             set={id => setList([...list, id])}
-            unset={id => setList(list.filter(item => item !== id))}
+            unset={id => setList(list.filter(item => item.seat !== id))}
         />);
 };
 
@@ -35,7 +35,7 @@ function SeatComponent({ props, set, unset, selected, colors }) {
         if (available) {
 
             if (selected) unset(seat);
-            else set(seat);
+            else set({ seat, number: name });
         };
     };
 

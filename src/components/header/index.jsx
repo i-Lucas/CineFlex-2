@@ -48,5 +48,6 @@ const Icon = styled.div`
     ion-icon {
         cursor: pointer;
         font-size: 25px;
+        color: #E8833A;
     }
 `;

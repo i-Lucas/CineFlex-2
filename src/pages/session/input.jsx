@@ -23,7 +23,7 @@ export default function RenderInputs({ props }) {
             movie: props.movie,
             tickets: props.seats
         };
-
+        
         navigate("/sucess", { state: send });
     };
 

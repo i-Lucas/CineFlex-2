@@ -55,7 +55,7 @@ export default function Session() {
 
     const { state } = useLocation();
     const { movie: movieID } = state;
-
+    
     return (
         <Container>
             <Header page={`/movie/${movieID}`} />
