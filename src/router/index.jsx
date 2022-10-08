@@ -8,6 +8,7 @@ import Main from "../pages/main";
 import Movie from "../pages/movie";
 import Session from "../pages/session";
 import Sucess from "../pages/sucess";
+import NotFound from "../pages/notfound";
 
 export default function App() {
 
@@ -22,8 +23,4 @@ export default function App() {
             </Routes>
         </BrowserRouter>
     )
-};
-
-function NotFound() {
-    return <h1>NotFound</h1>
 };
