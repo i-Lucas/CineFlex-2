@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Header({ page }) {
 
     const navigate = useNavigate();
-    const sucess = window.location.pathname === "/sucess";
+    const sucess = window.location.pathname === "/sucess" || window.location.pathname === "/"
 
     function RenderButton() {
 
