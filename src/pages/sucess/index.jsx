@@ -57,6 +57,7 @@ export default function Sucess() {
 
                     <TitlesContainer>
                         <TitlesContent>
+                            <br />
                             <Roboto bold size="1.5rem">Filme e sessão</Roboto>
                             <br />
                             <Roboto>{title}</Roboto>
