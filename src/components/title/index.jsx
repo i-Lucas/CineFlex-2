@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Roboto } from "../fonts";
 
-export default function Title({ content }) {
+export default function Title({ content, size }) {
 
     return (
         <Container>
-            <Roboto special={true} size="1.6rem">
+            <Roboto special={true} size={size ? size : "1.6rem"}>
                 {content}
             </Roboto>
         </Container>

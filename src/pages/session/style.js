@@ -91,3 +91,66 @@ export const OptionBox = styled.section`
     flex-direction: column;
     justify-content: center;
 `;
+
+
+export const InputContainer = styled.section`
+
+    width: 95%;
+    height: 70%;
+    margin: 0 auto;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    form {
+        width: 100%;
+        height: 100%;
+    }
+`;
+
+export const Input = styled.input`
+
+    width: 50%;
+    height: 30%;
+    margin: 1% 0 2% 0;
+    padding-left: 5%;
+
+    font-style: italic;
+    color: #000000;
+
+    @media screen and (max-width: 768px) {
+        margin: 1% 0 5% 0;
+        width: 100%;
+        height: 25%;
+    }
+`;
+
+export const Button = styled.button`
+
+    width: 20%;
+    height: 20%;
+    bottom: 5%;
+    right: 0;
+    
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    background-color: #E8833A;
+    border: 2px solid black;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 25%;
+        height: 15%;
+        right: 1px;
+        bottom: 5%;
+    }
+`;

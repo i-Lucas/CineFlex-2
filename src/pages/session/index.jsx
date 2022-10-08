@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 import Footer from "../../components/footer";
 import Header from "../../components/header";
@@ -19,7 +19,7 @@ import {
 } from "./style";
 
 export default function Session() {
-
+    
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export default function Session() {
     const { movie } = seats;
 
     const { loading, data, error } = useSeats.getSeats(id);
-    const colors = { selected: "#1AAE9E", available: "#C3CFD9", unavailable: "#FBE192" };
+    const [list, setList] = React.useState([]);
 
     React.useEffect(() => {
 
@@ -47,18 +47,27 @@ export default function Session() {
 
     }, [loading]);
 
+    const colors = {
+        selected: "#1AAE9E",
+        available: "#C3CFD9",
+        unavailable: "#FBE192"
+    };
+
+    const { state } = useLocation();
+    const { movie: movieID } = state;
+
     return (
         <Container>
-            <Header />
+            <Header page={`/movie/${movieID}`} />
             <Title content={"Selecione o(s) assento(s)"} />
 
             <Content>
                 <SeatContainer>
-                    <RenderSeats props={{ loading, error, seats, colors }} />
+                    <RenderSeats props={{ loading, error, seats, colors, list, setList }} />
                 </SeatContainer>
                 <BookSeats>
                     <RenderSubtitles colors={colors} />
-                    <RenderInputs />
+                    <RenderInputs props={{ movie, seats: list }} />
                 </BookSeats>
             </Content>
 

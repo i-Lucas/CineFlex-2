@@ -1,19 +1,16 @@
 import React from "react";
 
-import Loader from "../../components/loader";
-import SomethingWentWrong from "../../components/error";
-
 import { SeatBox, Content } from "./style";
+import Loader from "../../components/loader";
 import { Roboto } from "../../components/fonts";
+import SomethingWentWrong from "../../components/error";
 
 export default function RenderSeats({ props }) {
 
-    const { loading, error, seats, colors } = props;
+    const { loading, error, seats, colors, list, setList } = props;
 
     if (loading) return <Content><Loader /></Content>;
     if (error) return SomethingWentWrong(error);
-
-    const [list, setList] = React.useState([]);
 
     return seats.list.map((data, index) =>
 

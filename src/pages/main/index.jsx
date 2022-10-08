@@ -29,7 +29,7 @@ export default function Home() {
 
     return (
         <HomeContainer>
-            <Header />
+            <Header page="/" />
             <Content >
                 <Title content={"Selecione o filme"} />
                 <RenderContent />

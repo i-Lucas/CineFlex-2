@@ -54,12 +54,12 @@ export default function Movie() {
         if (error) return SomethingWentWrong(error);
 
         const { sessions } = session;
-        return sessions.map((element, index) => <TimeBox key={index} props={element} />);
+        return sessions.map((element, index) => <TimeBox key={index} props={element} movie={id} />);
     };
 
     return (
         <Container>
-            <Header />
+            <Header page="/" />
             <Title content={"Selecione o horário"} />
             <Content>
                 <MovieTimes />
@@ -69,7 +69,7 @@ export default function Movie() {
     )
 };
 
-function TimeBox({ props }) {
+function TimeBox({ props, movie }) {
 
     const navigate = useNavigate();
     const { weekday, date, showtimes } = props;
@@ -78,7 +78,7 @@ function TimeBox({ props }) {
 
         return showtimes.map(({ id, name: hour }) =>
 
-            <Button key={id} onClick={() => navigate(`/session/${id}`)}>
+            <Button key={id} onClick={() => navigate(`/session/${id}`, { state: { movie } })}>
                 <Roboto>{hour}</Roboto>
             </Button>);
     };
