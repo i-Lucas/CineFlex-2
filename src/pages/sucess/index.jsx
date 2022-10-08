@@ -31,12 +31,15 @@ export default function Sucess() {
         if (state === null) navigate("/");
 
         else {
+            
             const { name, cpf, movie, tickets } = state;
             const data = { name, cpf, movie, tickets };
 
             (async function () {
+
                 await api.post(`/seats/book-many`,
-                    { ids: data.tickets, name, cpf });
+                    { ids: data.tickets.map(item => item.seat), name, cpf });
+
             })();
 
             setData(data);
