@@ -23,7 +23,7 @@ export default function RenderInputs({ props }) {
             movie: props.movie,
             tickets: props.seats
         };
-        
+
         navigate("/sucess", { state: send });
     };
 
@@ -37,7 +37,7 @@ export default function RenderInputs({ props }) {
 
         } else {
 
-            const name = new String(value).replace(/[0-9]/, "");
+            const name = new String(value).replace(/[0-9\W "_"]/, "");
             setData({ ...data, name });
         };
     };
